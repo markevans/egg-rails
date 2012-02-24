@@ -5,7 +5,7 @@ module Egg
     argument :name, :type => :string
 
     def create_stuff
-      template "presenter.coffee.erb", "app/assets/javascripts/presenters/#{presenter_name}.coffee"
+      template "presenter.coffee.erb", "app/assets/javascripts/shared/presenters/#{presenter_name}.coffee"
     end
 
     private

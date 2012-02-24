@@ -5,8 +5,8 @@ module Egg
     argument :name, :type => :string
 
     def create_stuff
-      template "view.coffee.erb", "app/assets/javascripts/views/#{view_name}.coffee"
-      copy_file "template.mustache", "app/assets/javascripts/templates/#{underscore_name}.mustache"
+      template "view.coffee.erb", "app/assets/javascripts/shared/views/#{view_name}.coffee"
+      copy_file "template.mustache", "app/assets/javascripts/shared/templates/#{underscore_name}.mustache"
       if apps.length == 1
         add_handler apps.first
       else

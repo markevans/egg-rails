@@ -5,7 +5,7 @@ module Egg
     argument :name, :type => :string
 
     def create_stuff
-      template "model.coffee.erb", "app/assets/javascripts/models/#{model_name}.coffee"
+      template "model.coffee.erb", "app/assets/javascripts/shared/models/#{model_name}.coffee"
       apps.each do |app|
         add_handler(app) if yes?("Add a handler for app #{app.basename}?")
       end
