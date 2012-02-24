@@ -8,5 +8,7 @@ class @<%= app_name.camelize %> extends egg.Base
   @use egg.view
 
   @init (opts)->
+    @server = egg.RestApi.create(headers: {'X-CSRF-Token': opts.csrfToken})
+    
     # Kick off your app here!
     alert("Welcome to my awesome <%= app_name.camelize %>!")
