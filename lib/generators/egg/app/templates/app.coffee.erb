@@ -1,0 +1,12 @@
+#= require egg
+#= require mustache
+#= require_tree ../../shared
+#= require_tree ./handlers
+
+class @<%= app_name.camelize %> extends egg.Base
+
+  @use egg.view
+
+  @init (opts)->
+    # Kick off your app here!
+    alert("Welcome to my awesome <%= app_name.camelize %>!")

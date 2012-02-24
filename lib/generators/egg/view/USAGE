@@ -1,0 +1,7 @@
+Description:
+Generates an egg view
+
+Example:
+    rails generate egg:view autocomplete
+
+    This will create a view file, template and handlers for AutocompleteView

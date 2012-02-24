@@ -1,0 +1,7 @@
+Description:
+Generates an egg model
+
+Example:
+    rails generate egg:model post_comment
+
+    This will create a model file for PostComment

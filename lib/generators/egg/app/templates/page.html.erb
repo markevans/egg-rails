@@ -1,0 +1,11 @@
+<%%= egg_mustache_templates %>
+<%%= javascript_include_tag 'apps/<%= app_name %>' %>
+
+<div id="app"></div>
+
+<script type="text/javascript" charset="utf-8">
+  window.app = <%= app_name.camelize %>.create({
+    elem: '#app',
+    csrfToken: '<%%= form_authenticity_token %>'
+  })
+</script>

@@ -1,0 +1,11 @@
+class @<%= view_name.camelize %> extends egg.Base
+  
+  @use egg.view
+  
+  @className: '<%= underscore_name %>'
+
+  @init (opts)->
+    @render()
+  
+  render: ->
+    $(@elem).html JST['<%= underscore_name %>'](something: 'here')

@@ -1,0 +1,7 @@
+Description:
+Generates an egg app
+
+Example:
+    rails generate egg:app league_table
+
+    This will create a directory tree for app LeagueTableApp
