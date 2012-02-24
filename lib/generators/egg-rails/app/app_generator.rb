@@ -1,20 +1,20 @@
-module Egg
-  class AppGenerator < Rails::Generators::NamedBase
+module Egg::Rails
+  class AppGenerator < ::Rails::Generators::NamedBase
     source_root File.expand_path('../templates', __FILE__)
 
     argument :name, :type => :string
 
     def create_stuff
       jsdir = "app/assets/javascripts"
-      
+    
       template 'page.html.erb',      "app/views/#{ask('Enter the relative path for the html template (e.g. home/index):')}.html.erb"
       template "app.coffee.erb",     "#{jsdir}/apps/#{app_name}/index.coffee"
-      
+    
       empty_directory_with_gitignore "#{jsdir}/apps/#{app_name}/handlers"
       empty_directory_with_gitignore "#{jsdir}/shared/models"
       empty_directory_with_gitignore "#{jsdir}/shared/presenters"
       empty_directory_with_gitignore "#{jsdir}/shared/views"
-      
+    
       set_up_application_js
     end
 
@@ -34,7 +34,7 @@ module Egg
     end
 
     def set_up_application_js
-      app_js = Rails.root.join('app/assets/javascripts/application.js')
+      app_js = ::Rails.root.join('app/assets/javascripts/application.js')
       pattern = /^\/\/= require_tree \.$/
       if app_js.exist? &&
         app_js.read[pattern] &&
@@ -44,7 +44,7 @@ module Egg
     end
 
     def project_uses_git?
-      Rails.root.join('.git').exist?
+      ::Rails.root.join('.git').exist?
     end
 
   end

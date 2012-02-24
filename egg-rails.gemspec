@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "egg/version"
+require "egg-rails/version"
 
 Gem::Specification.new do |s|
-  s.name        = "egg"
-  s.version     = Egg::VERSION
+  s.name        = "egg-rails"
+  s.version     = Egg::Rails::VERSION
   s.authors     = ["Mark Evans"]
   s.email       = ["mark@new-bamboo.co.uk"]
   s.homepage    = ""
