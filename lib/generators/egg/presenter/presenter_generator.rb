@@ -1,4 +1,4 @@
-module Egg::Rails
+module Egg
   class PresenterGenerator < ::Rails::Generators::NamedBase
     source_root File.expand_path('../templates', __FILE__)
 
