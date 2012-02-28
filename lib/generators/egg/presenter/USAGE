@@ -1,7 +1,0 @@
-Description:
-Generates an egg presenter
-
-Example:
-    rails generate egg:presenter tab_set
-
-    This will create a presenter file for TabSet
