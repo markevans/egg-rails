@@ -10,19 +10,21 @@ module Egg
       template 'page.html.erb',      "app/views/#{ask('Enter the relative path for the html template (e.g. home/index):')}.html.erb"
       template "app.coffee.erb",     "#{jsdir}/apps/#{app_name}/index.coffee"
     
-      empty_directory_with_gitignore "#{jsdir}/apps/#{app_name}/handlers"
-      empty_directory_with_gitignore "#{jsdir}/shared/models"
-      empty_directory_with_gitignore "#{jsdir}/shared/views"
-      empty_directory_with_gitignore "#{jsdir}/shared/templates"
+      ensure_directory_exists "#{jsdir}/apps/#{app_name}/handlers"
+      ensure_directory_exists "#{jsdir}/shared/models"
+      ensure_directory_exists "#{jsdir}/shared/views"
+      ensure_directory_exists "#{jsdir}/shared/templates"
     
       set_up_application_js
     end
 
     private
 
-    def empty_directory_with_gitignore(dir)
-      empty_directory(dir)
-      create_file [dir, '.gitignore'].join('/') if project_uses_git?
+    def ensure_directory_exists(dir)
+      unless File.exist?(dir)
+        empty_directory(dir)
+        create_file [dir, '.gitignore'].join('/') if project_uses_git?
+      end
     end
 
     def underscore_name
