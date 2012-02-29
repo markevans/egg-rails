@@ -12,8 +12,8 @@ module Egg
     
       empty_directory_with_gitignore "#{jsdir}/apps/#{app_name}/handlers"
       empty_directory_with_gitignore "#{jsdir}/shared/models"
-      empty_directory_with_gitignore "#{jsdir}/shared/presenters"
       empty_directory_with_gitignore "#{jsdir}/shared/views"
+      empty_directory_with_gitignore "#{jsdir}/shared/templates"
     
       set_up_application_js
     end
