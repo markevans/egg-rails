@@ -7,6 +7,7 @@ module Egg
     def create_stuff
       template "view.coffee.erb", "app/assets/javascripts/shared/views/#{view_name}.coffee"
       template "template.mustache.erb", "app/assets/javascripts/shared/templates/#{underscore_name}.mustache"
+      template "view.css.scss.erb", "app/assets/stylesheets/views/#{underscore_name}.css.scss"
       if apps.length == 1
         add_handler apps.first
       else
