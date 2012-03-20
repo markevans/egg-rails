@@ -3,9 +3,7 @@
 #= require_tree ../../shared
 #= require_tree ./handlers
 
-class @<%= app_name.camelize %> extends egg.Base
-
-  @use egg.view
+class @<%= app_name.camelize %> extends egg.View
 
   @init (opts)->
     @server = egg.RestApi.create(headers: {'X-CSRF-Token': opts.csrfToken})
