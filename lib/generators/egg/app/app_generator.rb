@@ -13,6 +13,7 @@ module Egg
       ensure_directory_exists "#{jsdir}/apps/#{app_name}/handlers"
       ensure_directory_exists "#{jsdir}/shared/models"
       ensure_directory_exists "#{jsdir}/shared/views"
+      ensure_directory_exists "#{jsdir}/shared/presenters"
       ensure_directory_exists "#{jsdir}/shared/templates"
     
       set_up_application_js

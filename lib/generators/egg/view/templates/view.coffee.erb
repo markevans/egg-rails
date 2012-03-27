@@ -6,4 +6,4 @@ class @<%= view_name.camelize %> extends egg.View
     @render()
   
   render: ->
-    $(@elem).html JST['<%= underscore_name %>'](thing: 'me')
+    $(@elem).html JST['<%= underscore_name %>'](@presenter.toJSON())

@@ -6,6 +6,7 @@ module Egg
 
     def create_stuff
       template "view.coffee.erb", "app/assets/javascripts/shared/views/#{view_name}.coffee"
+      template "presenter.coffee.erb", "app/assets/javascripts/shared/presenters/#{presenter_name}.coffee"
       template "template.mustache.erb", "app/assets/javascripts/shared/templates/#{underscore_name}.mustache"
       template "view.css.scss.erb", "app/assets/stylesheets/views/#{underscore_name}.css.scss"
       if apps.length == 1
@@ -26,7 +27,11 @@ module Egg
     def view_name
       "#{underscore_name}_view"
     end
-  
+
+    def presenter_name
+      "#{underscore_name}_presenter"
+    end
+
     def apps
       Pathname.glob(::Rails.root.join('app/assets/javascripts/apps/*'))
     end
