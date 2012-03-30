@@ -10,10 +10,10 @@ module Egg
       template "template.mustache.erb", "app/assets/javascripts/shared/templates/#{underscore_name}.mustache"
       template "view.css.scss.erb", "app/assets/stylesheets/views/#{underscore_name}.css.scss"
       if apps.length == 1
-        add_handler apps.first
+        add_observer apps.first
       else
         apps.each do |app|
-          add_handler(app) if yes?("Add a handler for app #{app.basename}?")
+          add_observer(app) if yes?("Add a observer for app #{app.basename}?")
         end
       end
     end
@@ -36,8 +36,8 @@ module Egg
       Pathname.glob(::Rails.root.join('app/assets/javascripts/apps/*'))
     end
   
-    def add_handler(app)
-      template "handler.coffee.erb", app.join("handlers/views/#{view_name}.coffee")
+    def add_observer(app)
+      template "observer.coffee.erb", app.join("observers/views/#{view_name}.coffee")
     end
 
   end

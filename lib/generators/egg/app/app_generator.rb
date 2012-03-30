@@ -10,7 +10,7 @@ module Egg
       template 'page.html.erb',      "app/views/#{ask('Enter the relative path for the html template (e.g. home/index):')}.html.erb"
       template "app.coffee.erb",     "#{jsdir}/apps/#{app_name}/index.coffee"
     
-      ensure_directory_exists "#{jsdir}/apps/#{app_name}/handlers"
+      ensure_directory_exists "#{jsdir}/apps/#{app_name}/observers"
       ensure_directory_exists "#{jsdir}/shared/models"
       ensure_directory_exists "#{jsdir}/shared/views"
       ensure_directory_exists "#{jsdir}/shared/presenters"

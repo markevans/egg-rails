@@ -7,7 +7,7 @@ module Egg
     def create_stuff
       template "model.coffee.erb", "app/assets/javascripts/shared/models/#{model_name}.coffee"
       apps.each do |app|
-        add_handler(app) if yes?("Add a handler for app #{app.basename}?")
+        add_observer(app) if yes?("Add a observer for app #{app.basename}?")
       end
     end
 
@@ -21,8 +21,8 @@ module Egg
       Pathname.glob(::Rails.root.join('app/assets/javascripts/apps/*'))
     end
   
-    def add_handler(app)
-      template "handler.coffee.erb", app.join("handlers/models/#{model_name}.coffee")
+    def add_observer(app)
+      template "observer.coffee.erb", app.join("observers/models/#{model_name}.coffee")
     end
 
   end
