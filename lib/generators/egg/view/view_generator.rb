@@ -5,17 +5,11 @@ module Egg
     argument :name, :type => :string
 
     def create_stuff
-      template "view.coffee.erb", "app/assets/javascripts/shared/views/#{view_name}.coffee"
-      template "presenter.coffee.erb", "app/assets/javascripts/shared/presenters/#{presenter_name}.coffee"
-      template "template.mustache.erb", "app/assets/javascripts/shared/templates/#{underscore_name}.mustache"
-      template "view.css.scss.erb", "app/assets/stylesheets/views/#{underscore_name}.css.scss"
-      if apps.length == 1
-        add_observer apps.first
-      else
-        apps.each do |app|
-          add_observer(app) if yes?("Add a observer for app #{app.basename}?")
-        end
-      end
+      template "view.coffee.erb",       "app/assets/javascripts/views/#{view_name}.coffee"
+      template "presenter.coffee.erb",  "app/assets/javascripts/presenters/#{presenter_name}.coffee"
+      template "handler.coffee.erb",    "app/assets/javascripts/handlers/#{handler_name}.coffee"
+      template "template.mustache.erb", "app/assets/javascripts/templates/#{underscore_name}.mustache"
+      template "view.css.scss.erb",     "app/assets/stylesheets/views/#{underscore_name}.css.scss"
     end
 
     private
@@ -32,12 +26,8 @@ module Egg
       "#{underscore_name}_presenter"
     end
 
-    def apps
-      Pathname.glob(::Rails.root.join('app/assets/javascripts/apps/*'))
-    end
-  
-    def add_observer(app)
-      template "observer.coffee.erb", app.join("observers/views/#{view_name}.coffee")
+    def handler_name
+      "#{underscore_name}_handler"
     end
 
   end

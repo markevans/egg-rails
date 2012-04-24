@@ -7,14 +7,16 @@ module Egg
     def create_stuff
       jsdir = "app/assets/javascripts"
     
-      template 'page.html.erb',      "app/views/#{ask('Enter the relative path for the html template (e.g. home/index):')}.html.erb"
-      template "app.coffee.erb",     "#{jsdir}/apps/#{app_name}/index.coffee"
+      template 'page.html.erb',  "app/views/#{ask('Enter the relative path for the html template (e.g. home/index):')}.html.erb"
+      template "app.coffee.erb", "#{jsdir}/apps/#{app_name}.coffee"
     
-      ensure_directory_exists "#{jsdir}/apps/#{app_name}/observers"
-      ensure_directory_exists "#{jsdir}/shared/models"
-      ensure_directory_exists "#{jsdir}/shared/views"
-      ensure_directory_exists "#{jsdir}/shared/presenters"
-      ensure_directory_exists "#{jsdir}/shared/templates"
+      ensure_directory_exists "#{jsdir}/apps"
+      ensure_directory_exists "#{jsdir}/models"
+      ensure_directory_exists "#{jsdir}/observers"
+      ensure_directory_exists "#{jsdir}/views"
+      ensure_directory_exists "#{jsdir}/presenters"
+      ensure_directory_exists "#{jsdir}/handlers"
+      ensure_directory_exists "#{jsdir}/templates"
     
       set_up_application_js
     end

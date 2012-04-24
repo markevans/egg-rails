@@ -5,9 +5,9 @@ module Egg
     argument :name, :type => :string
 
     def create_stuff
-      template "model.coffee.erb", "app/assets/javascripts/shared/models/#{model_name}.coffee"
-      apps.each do |app|
-        add_observer(app) if yes?("Add a observer for app #{app.basename}?")
+      template "model.coffee.erb", "app/assets/javascripts/models/#{model_name}.coffee"
+      if yes?("Add a observer for #{model_name}?")
+        template "observer.coffee.erb", "app/assets/javascripts/observers/#{model_name}_observer.coffee"
       end
     end
 
@@ -15,14 +15,6 @@ module Egg
 
     def model_name
       "#{name}".underscore
-    end
-  
-    def apps
-      Pathname.glob(::Rails.root.join('app/assets/javascripts/apps/*'))
-    end
-  
-    def add_observer(app)
-      template "observer.coffee.erb", app.join("observers/models/#{model_name}.coffee")
     end
 
   end
