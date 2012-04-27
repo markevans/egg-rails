@@ -6,9 +6,7 @@ module Egg
 
     def create_stuff
       template "model.coffee.erb", "app/assets/javascripts/models/#{model_name}.coffee"
-      if yes?("Add a observer for #{model_name}?")
-        template "observer.coffee.erb", "app/assets/javascripts/observers/#{model_name}_observer.coffee"
-      end
+      template "observer.coffee.erb", "app/assets/javascripts/observers/#{model_name}_observer.coffee"
     end
 
     private
