@@ -1,11 +1,14 @@
-#= require egg
-#= require mustache
+define [
+    'egg'
+    'jquery'], (egg, $) ->
 
-class @<%= app_name.camelize %> extends egg.View
+  class <%= app_name.camelize %> extends egg.App
 
-  @init (opts)->
-    @server = egg.RestApi.create(headers: {'X-CSRF-Token': opts.csrfToken})
-    @localStore = egg.Datastore.create(store: localStorage)
-    
-    # Kick off your app here!
-    alert("Welcome to my awesome <%= app_name.camelize %>!")
+    @init (opts)->
+      @elem = $(opts.elem)
+
+      @server = egg.RestApi.create(headers: {'X-CSRF-Token': opts.csrfToken})
+      @localStore = egg.Datastore.create(store: localStorage)
+
+      # Kick off your app here!
+      alert("Welcome to my awesome <%= app_name.camelize %>!")

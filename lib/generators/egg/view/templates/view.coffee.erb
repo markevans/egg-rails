@@ -1,9 +1,15 @@
-class @<%= view_name.camelize %> extends egg.View
-  
-  @className: '<%= underscore_name %>'
+define ['egg', 'jst!<%= underscore_name %>'], (egg, jst) ->
 
-  @init (opts)->
-    @render()
-  
-  render: ->
-    $(@elem).html JST['<%= underscore_name %>'](@presenter().toJSON())
+  class <%= view_name.camelize %> extends egg.View
+
+    @className: '<%= underscore_name %>'
+
+    # @listen 'model:event', 'method'
+
+    # @onDOM '.selector', 'event', 'delegateMethod'
+
+    @init (opts)->
+      @render()
+
+    render: ->
+      $(@elem).html jst(@presenter().toJSON())
